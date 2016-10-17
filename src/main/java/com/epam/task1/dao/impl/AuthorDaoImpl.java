@@ -1,8 +1,10 @@
 package com.epam.task1.dao.impl;
 
 import com.epam.task1.dao.CrudDao;
+import com.epam.task1.dao.connectionpool.DataSource;
 import com.epam.task1.exception.DaoException;
 import com.epam.task1.model.Author;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,10 +16,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component(value = "author")
 @Repository
 @Transactional
 public class AuthorDaoImpl implements CrudDao<Author> {
+
+    @Autowired
+    private DataSource dataSource;
 
     private final static String SQL_GET_ALL_AUTHORS = "SELECT ATR_ID,ATR_NAME,ATR_SURNAME FROM AUTHORS";
     private final static String SQL_GET_ALL_AUTHORS_OF_ONE_NEWS = "SELECT AUTHORS.ATR_ID,AUTHORS.ATR_NAME,AUTHORS.ATR_SURNAME" +
@@ -29,7 +33,7 @@ public class AuthorDaoImpl implements CrudDao<Author> {
 
     public boolean create(Author author) throws DaoException {
 
-        try (Connection connection = getConnection();
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_CREATE_AUTHOR)) {
 
             ps.setString(1, author.getName());
@@ -49,7 +53,7 @@ public class AuthorDaoImpl implements CrudDao<Author> {
     public List<Author> read() throws DaoException {
         List<Author> authors = new ArrayList<>();
 
-        try (Connection connection = getConnection();
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_GET_ALL_AUTHORS);
              ResultSet rs = ps.executeQuery()) {
 
@@ -73,7 +77,7 @@ public class AuthorDaoImpl implements CrudDao<Author> {
         List<Author> authors = new ArrayList<>();
         ResultSet rs = null;
 
-        try (Connection connection = getConnection();
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_GET_ALL_AUTHORS_OF_ONE_NEWS)) {
 
             ps.setInt(1, idNews);
@@ -103,7 +107,7 @@ public class AuthorDaoImpl implements CrudDao<Author> {
 
 
     public boolean update(Author author) throws DaoException {
-        try (Connection connection = getConnection();
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_UPDATE_AUTHOR)) {
 
             ps.setString(1, author.getName());
@@ -122,7 +126,7 @@ public class AuthorDaoImpl implements CrudDao<Author> {
     }
 
     public boolean delete(int id) throws DaoException {
-        try (Connection connection = getConnection();
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_DELETE_AUTHOR)) {
 
             ps.setInt(1, id);

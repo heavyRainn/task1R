@@ -11,19 +11,15 @@ import java.sql.SQLException;
 @Component
 public class DataSource {
 
-    private static BasicDataSource ds;
+    @Autowired
+    private BasicDataSource ds;
 
-    public static Connection getConnection() throws DaoException {
+    public Connection getConnection() throws DaoException {
         try {
             return ds.getConnection();
         } catch (SQLException e) {
             throw new DaoException(e);
         }
-    }
-
-    @Autowired(required = true)
-    public void setDs(BasicDataSource ds) {
-        DataSource.ds = ds;
     }
 
 }

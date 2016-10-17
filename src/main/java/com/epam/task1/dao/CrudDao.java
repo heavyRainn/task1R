@@ -7,14 +7,14 @@ import java.util.List;
 
 public interface CrudDao<T> extends Dao {
 
-    boolean create(T t) throws DaoException;
+    boolean create(T t);
 
-    List<T> read() throws DaoException;
+    List<T> read();
 
-    List<T> read(int idNews) throws DaoException;
+    List<T> read(int idNews);
 
-    boolean update(T t) throws DaoException;
+    boolean update(T t);
 
-    boolean delete(int id) throws DaoException;
+    boolean delete(int id);
 
 }

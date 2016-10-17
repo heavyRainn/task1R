@@ -1,8 +1,10 @@
 package com.epam.task1.dao.impl;
 
 import com.epam.task1.dao.NewsDao;
+import com.epam.task1.dao.connectionpool.DataSource;
 import com.epam.task1.exception.DaoException;
 import com.epam.task1.model.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,20 +17,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-@Component
 @Repository
 @Transactional
 public class NewsDaoImpl implements NewsDao {
+
+    @Autowired
+    private DataSource dataSource;
 
     private final static String SQL_GET_ALL_NEWS = "SELECT N_ID,N_MAINTITLE,N_SHORTTITLE,N_NEWSTEXT,N_DATE,N_PHOTO," +
             "N_THEME FROM NEWS";
     private final static String SQL_GET_ALL_NEWS_BY_THEME = "SELECT N_ID,N_MAINTITLE,N_SHORTTITLE,N_NEWSTEXT," +
             "N_DATE,N_PHOTO,N_THEME FROM NEWS WHERE N_THEME = ?";
-    private final static String SQL_GET_ALL_POPULAR_NEWS = "SELECT DISTINCT NEWS.N_ID, NEWS.N_MAINTITLE, " +
-            "NEWS.N_SHORTTITLE, NEWS.N_DATE, NEWS.N_PHOTO, NEWS.N_THEME, COUNT(COM_ID) AS COUNT_COMENTS FROM " +
-            "NEWS JOIN NEWS_HAVE_COMMENTS ON NEWS.N_ID = NEWS_HAVE_COMMENTS.N_ID GROUP BY NEWS.N_ID, " +
-            "NEWS.N_MAINTITLE, NEWS.N_SHORTTITLE, NEWS.N_DATE, NEWS.N_PHOTO, NEWS.N_THEME ORDER BY COUNT " +
-            "COMENTS DESC";
+    private final static String SQL_GET_ALL_POPULAR_NEWS = "SELECT DISTINCT NEWS.N_ID, NEWS.N_MAINTITLE, NEWS.N_SHORTTITLE , NEWS.N_DATE, NEWS.N_PHOTO, NEWS.N_THEME,\n" +
+            "COUNT(COM_ID) AS COUNT_COMENTS FROM NEWS JOIN NEWS_HAVE_COMMENTS ON NEWS.N_ID = NEWS_HAVE_COMMENTS.N_ID " +
+            "GROUP BY NEWS.N_ID, NEWS.N_MAINTITLE, NEWS.N_SHORTTITLE , NEWS.N_DATE, NEWS.N_PHOTO, NEWS.N_THEME " +
+            "ORDER BY COUNT_COMENTS DESC";
     private final static String SQL_GET_SINGLE_NEWS_BY_ID = "SELECT N_ID, N_MAINTITLE,N_SHORTTITLE,N_NEWSTEXT," +
             "N_DATE,N_PHOTO,N_THEME FROM NEWS WHERE N_ID = ?";
     private final static String SQL_GET_SINGLE_NEWS_BY_TITLE = "SELECT N_ID, N_MAINTITLE,N_SHORTTITLE,N_NEWSTEXT," +
@@ -46,7 +49,7 @@ public class NewsDaoImpl implements NewsDao {
     public List<News> viewAllNews() throws DaoException {
         List<News> newsList = new ArrayList<>();
 
-        try (Connection connection = getConnection();
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_GET_ALL_NEWS);
              ResultSet rs = ps.executeQuery()) {
 
@@ -78,7 +81,7 @@ public class NewsDaoImpl implements NewsDao {
         List<News> newsList = new ArrayList<>();
         ResultSet rs = null;
 
-        try (Connection connection = getConnection();
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_GET_ALL_NEWS_BY_THEME)) {
 
             ps.setString(1, theme.toString());
@@ -117,7 +120,7 @@ public class NewsDaoImpl implements NewsDao {
     public List<News> viewAllPopularNews() throws DaoException {
         List<News> newsList = new ArrayList<>();
 
-        try (Connection connection = getConnection();
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_GET_ALL_POPULAR_NEWS);
              ResultSet rs = ps.executeQuery()) {
 
@@ -150,7 +153,7 @@ public class NewsDaoImpl implements NewsDao {
         List<News> newsList = new ArrayList<>();
         ResultSet rs = null;
 
-        try (Connection connection = getConnection();
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_GET_SINGLE_NEWS_BY_ID)) {
 
             ps.setInt(1, id);
@@ -189,7 +192,7 @@ public class NewsDaoImpl implements NewsDao {
         List<News> newsList = new ArrayList<>();
         ResultSet rs = null;
 
-        try (Connection connection = getConnection();
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_GET_SINGLE_NEWS_BY_TITLE)) {
 
             ps.setString(1, title);
@@ -228,7 +231,7 @@ public class NewsDaoImpl implements NewsDao {
         List<News> newsList = new ArrayList<>();
         ResultSet rs = null;
 
-        try (Connection connection = getConnection();
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_GET_SINGLE_NEWS_BY_TAGS)) {
 
 
@@ -266,7 +269,7 @@ public class NewsDaoImpl implements NewsDao {
         List<News> newsList = new ArrayList<>();
         ResultSet rs = null;
 
-        try (Connection connection = getConnection();
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_GET_SINGLE_NEWS_BY_AUTHORS)) {
 
 
@@ -302,7 +305,7 @@ public class NewsDaoImpl implements NewsDao {
     }
 
     public boolean addNews(News news) throws DaoException {
-        try (Connection connection = getConnection();
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_CREATE_NEWS)) {
 
             ps.setString(1, news.getMainTitle());
@@ -324,7 +327,7 @@ public class NewsDaoImpl implements NewsDao {
     }
 
     public boolean editNews(News news) throws DaoException {
-        try (Connection connection = getConnection();
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_EDIT_NEWS)) {
 
             ps.setString(1, news.getMainTitle());
@@ -346,7 +349,7 @@ public class NewsDaoImpl implements NewsDao {
     }
 
     public boolean deleteNews(int id) throws DaoException {
-        try (Connection connection = getConnection();
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_DELETE_NEWS)) {
 
             ps.setInt(1, id);
@@ -362,7 +365,7 @@ public class NewsDaoImpl implements NewsDao {
     }
 
     public boolean addComment(int idNews, int idComment) throws DaoException {
-        try (Connection connection = getConnection();
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_ADD_COMMENT_TO_NEWS)) {
 
             ps.setInt(1, idNews);
@@ -380,7 +383,7 @@ public class NewsDaoImpl implements NewsDao {
     }
 
     public boolean attachTagToNews(int idNews, int idTag) throws DaoException {
-        try (Connection connection = getConnection();
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_ATTACH_TAG_TO_NEWS)) {
 
             ps.setInt(1, idNews);

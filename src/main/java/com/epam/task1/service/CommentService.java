@@ -16,19 +16,19 @@ public class CommentService {
     @Autowired
     private CrudDao<Comment> commentDao;
 
-    public boolean create(Comment comment) throws ServiceException {
+    public boolean create(Comment comment) {
         return commentDao.create(comment);
     }
 
-    public List<Comment> read() throws ServiceException {
+    public List<Comment> read() {
         return commentDao.read();
     }
 
-    public boolean update(Comment comment) throws ServiceException {
+    public boolean update(Comment comment) {
         return commentDao.update(comment);
     }
 
-    public boolean delete(int id) throws ServiceException {
+    public boolean delete(int id) {
         return commentDao.delete(id);
     }
 

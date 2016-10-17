@@ -8,31 +8,31 @@ import java.util.Set;
 
 public interface NewsDao extends Dao {
 
-    List<News> viewAllNews() throws DaoException;
+    List<News> viewAllNews();
 
-    List<News> viewAllNews(Theme theme) throws DaoException;
+    List<News> viewAllNews(Theme theme);
 
-    List<News> viewAllPopularNews() throws DaoException;
+    List<News> viewAllPopularNews();
 
-    List<News> viewASingleNews(int id) throws DaoException;
+    List<News> viewASingleNews(int id);
 
-    List<News> viewASingleNews(String title) throws DaoException;
+    List<News> viewASingleNews(String title);
 
-    List<News> viewASingleNews(Set<Tag> tags) throws DaoException;
+    List<News> viewASingleNews(Set<Tag> tags);
 
-    List<News> viewASingleNews(List<Author> authors) throws DaoException;
+    List<News> viewASingleNews(List<Author> authors);
 
-    boolean addNews(News news) throws DaoException;
+    boolean addNews(News news);
 
-    boolean editNews(News news) throws DaoException;
+    boolean editNews(News news);
 
-    boolean deleteNews(int id) throws DaoException;
+    boolean deleteNews(int id);
 
-    boolean addComment(int idNews, int idComment) throws DaoException;
+    boolean addComment(int idNews, int idComment);
 
-    boolean attachTagToNews(int idNews, int idTag) throws DaoException;
+    boolean attachTagToNews(int idNews, int idTag);
 
-    int totalCount() throws DaoException;
+    int totalCount();
 
-    int totalCount(Theme theme) throws DaoException;
+    int totalCount(Theme theme);
 }

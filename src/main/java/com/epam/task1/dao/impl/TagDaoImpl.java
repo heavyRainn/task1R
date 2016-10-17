@@ -1,9 +1,11 @@
 package com.epam.task1.dao.impl;
 
 import com.epam.task1.dao.CrudDao;
+import com.epam.task1.dao.connectionpool.DataSource;
 import com.epam.task1.exception.DaoException;
 import com.epam.task1.model.Author;
 import com.epam.task1.model.Tag;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,10 +17,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component(value = "tag")
 @Repository
 @Transactional
 public class TagDaoImpl implements CrudDao<Tag> {
+
+    @Autowired
+    private DataSource dataSource;
 
     private final static String SQL_CREATE_TAG = "INSERT INTO TAGS (TG_ID, TG_MESSAGE) VALUES (null, ?)";
     private final static String SQL_GET_ALL_TAGS = "SELECT TG_ID,TG_MESSAGE FROM TAGS";
@@ -28,7 +32,7 @@ public class TagDaoImpl implements CrudDao<Tag> {
     private final static String SQL_DELETE_TAG = "DELETE FROM TAGS WHERE TG_ID = ?";
 
     public boolean create(Tag tag) throws DaoException {
-        try (Connection connection = getConnection();
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_CREATE_TAG)) {
 
             ps.setString(1, tag.getText());
@@ -47,7 +51,7 @@ public class TagDaoImpl implements CrudDao<Tag> {
     public List<Tag> read() throws DaoException {
         List<Tag> tags = new ArrayList<>();
 
-        try (Connection connection = getConnection();
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_GET_ALL_TAGS);
              ResultSet rs = ps.executeQuery()) {
 
@@ -72,7 +76,7 @@ public class TagDaoImpl implements CrudDao<Tag> {
         List<Tag> tags = new ArrayList<>();
         ResultSet rs = null;
 
-        try (Connection connection = getConnection();
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_GET_NEWS_TAGS)) {
 
             ps.setInt(1, idNews);
@@ -102,7 +106,7 @@ public class TagDaoImpl implements CrudDao<Tag> {
     }
 
     public boolean update(Tag tag) throws DaoException {
-        try (Connection connection = getConnection();
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_UPDATE_TAG)) {
 
             ps.setString(1, tag.getText());
@@ -120,7 +124,7 @@ public class TagDaoImpl implements CrudDao<Tag> {
     }
 
     public boolean delete(int id) throws DaoException {
-        try (Connection connection = getConnection();
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_DELETE_TAG)) {
 
             ps.setInt(1, id);

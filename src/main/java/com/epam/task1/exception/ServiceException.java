@@ -1,6 +1,6 @@
 package com.epam.task1.exception;
 
-public class ServiceException extends RuntimeException {
+public class ServiceException extends NewspaperException {
 
     private static final long serialVersionUID = 1L;
 

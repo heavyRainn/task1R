@@ -20,19 +20,19 @@ public class NewsService {
     @Autowired
     private NewsDao newsDao;
 
-    public List<News> viewAllNews() throws ServiceException {
+    public List<News> viewAllNews() {
         return newsDao.viewAllNews();
     }
 
-    public List<News> viewAllNews(Theme theme) throws ServiceException {
+    public List<News> viewAllNews(Theme theme) {
         return newsDao.viewAllNews(theme);
     }
 
-    public List<News> viewAllPopularNews() throws ServiceException {
+    public List<News> viewAllPopularNews() {
         return newsDao.viewAllPopularNews();
     }
 
-    public List<News> viewASingleNews(NewsSearchCriteria searchCriteria) throws ServiceException {
+    public List<News> viewASingleNews(NewsSearchCriteria searchCriteria) {
         NewsSearchType searchType = searchCriteria.getSearchType();
         List<News> news = null;
 
@@ -52,31 +52,31 @@ public class NewsService {
         return news;
     }
 
-    public boolean addNews(News news) throws ServiceException {
+    public boolean addNews(News news) {
         return newsDao.addNews(news);
     }
 
-    public boolean editNews(News news) throws ServiceException {
+    public boolean editNews(News news) {
         return newsDao.editNews(news);
     }
 
-    public boolean deleteNews(int id) throws ServiceException {
+    public boolean deleteNews(int id) {
         return newsDao.deleteNews(id);
     }
 
-    public boolean addComment(int idNews, int idComment) throws ServiceException {
+    public boolean addComment(int idNews, int idComment) {
         return newsDao.addComment(idNews, idComment);
     }
 
-    public boolean attachTagToNews(int idNews, int idTag) throws ServiceException {
+    public boolean attachTagToNews(int idNews, int idTag) {
         return newsDao.attachTagToNews(idNews, idTag);
     }
 
-    public int totalCount() throws ServiceException {
+    public int totalCount() {
         return newsDao.totalCount();
     }
 
-    public int totalCount(Theme theme) throws ServiceException {
+    public int totalCount(Theme theme) {
         return newsDao.totalCount(theme);
     }
 

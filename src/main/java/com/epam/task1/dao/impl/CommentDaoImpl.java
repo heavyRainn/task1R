@@ -1,9 +1,11 @@
 package com.epam.task1.dao.impl;
 
 import com.epam.task1.dao.CrudDao;
+import com.epam.task1.dao.connectionpool.DataSource;
 import com.epam.task1.exception.DaoException;
 import com.epam.task1.model.Author;
 import com.epam.task1.model.Comment;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,10 +15,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-@Component(value = "comment")
 @Repository
 @Transactional
 public class CommentDaoImpl implements CrudDao<Comment> {
+
+    @Autowired
+    private DataSource dataSource;
 
     private final static String SQL_CREATE_COMMENT = "INSERT INTO COMMENTS (COM_ID, COM_MESSAGE,COM_DATE,COM_ID_AUTHOR) " +
             "VALUES (null,?,?,?)";
@@ -29,7 +33,7 @@ public class CommentDaoImpl implements CrudDao<Comment> {
     private final static String SQL_DELETE_COMMENT = "DELETE FROM COMMENTS WHERE COM_ID = ?";
 
     public boolean create(Comment comment) throws DaoException {
-        try (Connection connection = getConnection();
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_CREATE_COMMENT)) {
 
             java.util.Date date = new java.util.Date();
@@ -53,7 +57,7 @@ public class CommentDaoImpl implements CrudDao<Comment> {
     public List<Comment> read() throws DaoException {
         List<Comment> comments = new ArrayList<>();
 
-        try (Connection connection = getConnection();
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_GET_ALL_COMMENTS);
              ResultSet rs = ps.executeQuery()) {
 
@@ -78,7 +82,7 @@ public class CommentDaoImpl implements CrudDao<Comment> {
         List<Comment> comments = new ArrayList<>();
         ResultSet rs = null;
 
-        try (Connection connection = getConnection();
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_GET_ALL_COMMENTS_OF_ONE_NEWS)) {
 
             ps.setInt(1, idNews);
@@ -108,7 +112,7 @@ public class CommentDaoImpl implements CrudDao<Comment> {
     }
 
     public boolean update(Comment comment) throws DaoException {
-        try (Connection connection = getConnection();
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_UPDATE_COMMENT)) {
 
             ps.setString(1, comment.getText());
@@ -127,7 +131,7 @@ public class CommentDaoImpl implements CrudDao<Comment> {
     }
 
     public boolean delete(int id) throws DaoException {
-        try (Connection connection = getConnection();
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_DELETE_COMMENT)) {
 
             ps.setInt(1, id);

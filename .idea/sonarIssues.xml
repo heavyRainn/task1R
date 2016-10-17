@@ -3,6 +3,11 @@
   <component name="issues">
     <option name="index">
       <map>
+        <entry key="/a.dummy">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/pom.xml">
           <value>
             <set />
@@ -14,6 +19,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/task1/config/AppConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/task1/config/Newspaper.java">
           <value>
             <set />
           </value>
@@ -69,6 +79,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/task1/exception/DaoException.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/task1/exception/NewspaperException.java">
           <value>
             <set />
           </value>
@@ -129,6 +144,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/task1/service/UserService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/task1/service/search/NewsSearchType.java">
           <value>
             <set />
           </value>

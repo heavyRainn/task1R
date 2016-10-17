@@ -11,7 +11,7 @@ public class UserService {
     @Autowired
     private UserDao userDao;
 
-    public boolean authenticate(String login, String password) throws ServiceException {
+    public boolean authenticate(String login, String password) {
         return userDao.authenticate(login, password);
     }
 

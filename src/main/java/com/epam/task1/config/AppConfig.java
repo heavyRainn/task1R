@@ -9,18 +9,21 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.stereotype.Repository;
 
 @ComponentScan("com.epam.task1")
-@Repository("db.properties")
 @PropertySource("classpath:db.properties")
 public class AppConfig {
 
     @Value("${db.driver}")
     private String driver;
+
     @Value("${db.username}")
     private String userName;
+
     @Value("${db.password}")
     private String password;
+
     @Value("${db.url}")
     private String url;
+
     @Value("${db.maxActive}")
     private int maxActive;
 

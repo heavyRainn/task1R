@@ -15,23 +15,23 @@ public class TagService {
     @Autowired
     private CrudDao<Tag> tagDao;
 
-    public boolean create(Tag tag) throws ServiceException {
+    public boolean create(Tag tag) {
         return tagDao.create(tag);
     }
 
-    public List<Tag> read() throws ServiceException {
+    public List<Tag> read() {
         return tagDao.read();
     }
 
-    public List<Tag> read(int idNews) throws ServiceException {
+    public List<Tag> read(int idNews) {
         return tagDao.read(idNews);
     }
 
-    public boolean update(Tag tag) throws ServiceException {
+    public boolean update(Tag tag) {
         return tagDao.update(tag);
     }
 
-    public boolean delete(int id) throws ServiceException {
+    public boolean delete(int id) {
         return tagDao.delete(id);
     }
 

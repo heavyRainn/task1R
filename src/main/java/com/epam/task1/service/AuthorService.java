@@ -16,23 +16,23 @@ public class AuthorService {
     @Autowired
     private CrudDao<Author> authorDao;
 
-    public boolean create(Author author) throws ServiceException {
+    public boolean create(Author author) {
         return authorDao.create(author);
     }
 
-    public List<Author> read() throws ServiceException {
+    public List<Author> read() {
         return authorDao.read();
     }
 
-    public List<Author> read(int idNews) throws ServiceException {
+    public List<Author> read(int idNews) {
         return authorDao.read(idNews);
     }
 
-    public boolean update(Author author) throws ServiceException {
+    public boolean update(Author author) {
         return authorDao.update(author);
     }
 
-    public boolean delete(int id) throws ServiceException {
+    public boolean delete(int id) {
         return authorDao.delete(id);
     }
 
