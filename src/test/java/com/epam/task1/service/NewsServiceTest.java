@@ -80,11 +80,10 @@ public class NewsServiceTest {
 
     @Test
     public void testNewsServiceEditNews() {
-        int intStub = anyInt();
-        News news = any(News.class);
+        News news = mock(News.class);
 
-        newsService.editNews(intStub, news);
-        verify(newsDao).editNews(intStub, news);
+        newsService.editNews(news);
+        verify(newsDao).editNews(news);
     }
 
     @Test
@@ -98,19 +97,19 @@ public class NewsServiceTest {
     @Test
     public void testNewsServiceAddComment() {
         int intStub = anyInt();
-        Comment comment = any(Comment.class);
+        int intStub1 = anyInt();
 
-        newsService.addComment(intStub, comment);
-        verify(newsDao).addComment(intStub, comment);
+        newsService.addComment(intStub, intStub1);
+        verify(newsDao).addComment(intStub, intStub1);
     }
 
     @Test
     public void testNewsServiceAttachTagToNews() {
         int intStub = anyInt();
-        Tag tag = any(Tag.class);
+        int intStub1 = anyInt();
 
-        newsService.attachTagToNews(intStub, tag);
-        verify(newsDao).attachTagToNews(intStub, tag);
+        newsService.attachTagToNews(intStub, intStub1);
+        verify(newsDao).attachTagToNews(intStub, intStub1);
     }
 
     @Test

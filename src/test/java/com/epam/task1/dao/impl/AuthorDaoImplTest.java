@@ -69,6 +69,17 @@ public class AuthorDaoImplTest {
 
     @Test
     @Rollback
+    public void testReadById() {
+        List<Author> authors;
+        int idNews = 501;
+        authors = authorDao.read(idNews);
+
+        Assert.assertFalse(authors.isEmpty());
+        Assert.assertTrue(authors.get(0) instanceof Author);
+    }
+
+    @Test
+    @Rollback
     public void testUpdate() {
         List<Author> authors;
         authors = authorDao.read();

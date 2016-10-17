@@ -17,20 +17,21 @@ public class App {
 
         ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 
-        AuthorService autorService = ctx.getBean(AuthorService.class);
+        AuthorService authorService = ctx.getBean(AuthorService.class);
         UserService userService = ctx.getBean(UserService.class);
         TagService tagService = ctx.getBean(TagService.class);
         NewsService newsService = ctx.getBean(NewsService.class);
 
         System.out.println("UserService : " + userService.authenticate("Grek221", "1222"));
-        System.out.println("AuthorService : " + autorService.read());
-        System.out.println("AuthorService  : " + autorService.read(501));
-        System.out.println("TagService :" + tagService.read());
-        System.out.println("TagService :" + tagService.read(501));
-        System.out.println("NewsService :" + newsService.viewAllNews());
-        System.out.println("NewsService :" + newsService.viewAllNews(Theme.FASHION));
-        System.out.println("NewsService :" + newsService.totalCount());
-        System.out.println("NewsService :" + newsService.totalCount(Theme.FASHION));
+        System.out.println("AuthorService : " + authorService.read());
+        System.out.println("AuthorService  : " + authorService.read(501));
+        System.out.println("TagService : " + tagService.read());
+        System.out.println("TagService : " + tagService.read(501));
+        System.out.println("NewsService : " + newsService.viewAllNews());
+        System.out.println("NewsService : " + newsService.viewAllNews(Theme.FASHION));
+        System.out.println("NewsService : " + newsService.totalCount());
+        System.out.println("NewsService : " + newsService.totalCount(Theme.FASHION));
+        System.out.println("NewsService : " + newsService.viewAllPopularNews());
 
     }
 }

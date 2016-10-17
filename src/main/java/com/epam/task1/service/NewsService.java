@@ -32,9 +32,9 @@ public class NewsService {
         return newsDao.viewAllPopularNews();
     }
 
-    public News viewASingleNews(NewsSearchCriteria searchCriteria) throws ServiceException {
+    public List<News> viewASingleNews(NewsSearchCriteria searchCriteria) throws ServiceException {
         NewsSearchType searchType = searchCriteria.getSearchType();
-        News news = null;
+        List<News> news = null;
 
         if (searchType == NewsSearchType.BY_ID) {
             news = newsDao.viewASingleNews(searchCriteria.getId());
@@ -56,20 +56,20 @@ public class NewsService {
         return newsDao.addNews(news);
     }
 
-    public boolean editNews(int id, News news) throws ServiceException {
-        return newsDao.editNews(id, news);
+    public boolean editNews(News news) throws ServiceException {
+        return newsDao.editNews(news);
     }
 
     public boolean deleteNews(int id) throws ServiceException {
         return newsDao.deleteNews(id);
     }
 
-    public boolean addComment(int idNews, Comment comment) throws ServiceException {
-        return newsDao.addComment(idNews, comment);
+    public boolean addComment(int idNews, int idComment) throws ServiceException {
+        return newsDao.addComment(idNews, idComment);
     }
 
-    public boolean attachTagToNews(int idNews, Tag tag) throws ServiceException {
-        return newsDao.attachTagToNews(idNews, tag);
+    public boolean attachTagToNews(int idNews, int idTag) throws ServiceException {
+        return newsDao.attachTagToNews(idNews, idTag);
     }
 
     public int totalCount() throws ServiceException {
