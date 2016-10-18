@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 @ComponentScan("com.epam.task1")
 @PropertySource("classpath:db.properties")
-public class AppConfig {
+public class NewspaperConfig {
 
     @Value("${db.driver}")
     private String driver;

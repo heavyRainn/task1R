@@ -9,13 +9,13 @@ import org.apache.log4j.BasicConfigurator;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class App {
+public class Newspaper {
 
     public static void main(String[] args) {
 
         BasicConfigurator.configure();
 
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(NewspaperConfig.class);
 
         AuthorService authorService = ctx.getBean(AuthorService.class);
         UserService userService = ctx.getBean(UserService.class);
