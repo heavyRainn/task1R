@@ -27,7 +27,6 @@
         <spring.version>LATEST</spring.version>
         <mockito.version>2.0.2-beta</mockito.version>
         <logger.version>1.2.17</logger.version>
-        <h2.version>1.4.192</h2.version>
         <dbcp.version>1.4</dbcp.version>
         <spring.test.version>4.3.3.RELEASE</spring.test.version>
         <ojdbc.version>11.2.0</ojdbc.version>
@@ -79,12 +78,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
             <version>${dbcp.version}</version>
@@ -124,6 +117,13 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
             <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.springtestdbunit</groupId>
+            <artifactId>spring-test-dbunit</artifactId>
+            <version>1.2.0</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

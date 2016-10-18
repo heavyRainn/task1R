@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.stereotype.Repository;
 
 @ComponentScan("com.epam.task1")
 @PropertySource("classpath:db.properties")
@@ -27,7 +26,7 @@ public class NewspaperConfig {
     @Value("${db.maxActive}")
     private int maxActive;
 
-    @Bean("configDB")
+    @Bean
     public BasicDataSource getBasicDataSource() {
 
         BasicDataSource bds = new BasicDataSource();

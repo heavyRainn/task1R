@@ -1,5 +1,7 @@
 package com.epam.task1.model;
 
+import static javax.swing.text.StyleConstants.Size;
+
 public class Author {
 
     private int id;

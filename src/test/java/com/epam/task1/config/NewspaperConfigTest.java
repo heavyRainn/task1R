@@ -8,7 +8,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @ComponentScan("com.epam.task1")
-@PropertySource("classpath:db.properties")
+@PropertySource("classpath:dbTest.properties")
 public class NewspaperConfigTest {
 
     @Value("${db.driver}")
@@ -26,7 +26,7 @@ public class NewspaperConfigTest {
     @Value("${db.maxActive}")
     private int maxActive;
 
-    @Bean("configDB")
+    @Bean
     public BasicDataSource getBasicDataSource() {
 
         BasicDataSource bds = new BasicDataSource();
@@ -39,6 +39,7 @@ public class NewspaperConfigTest {
 
         return bds;
     }
+
 
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertyConfigInDev() {

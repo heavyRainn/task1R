@@ -1,42 +1,46 @@
 package com.epam.task1.dao.impl;
 
+import com.epam.task1.config.NewspaperConfigTest;
 import com.epam.task1.dao.NewsDao;
-import com.epam.task1.dao.connectionpool.DataSource;
 import com.epam.task1.model.News;
 import com.epam.task1.model.Theme;
+import com.github.springtestdbunit.DbUnitTestExecutionListener;
+import com.github.springtestdbunit.annotation.DatabaseOperation;
+import com.github.springtestdbunit.annotation.DatabaseSetup;
+import com.github.springtestdbunit.annotation.DatabaseTearDown;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
+import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
+import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
+import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = NewspaperConfigTest.class)
+@TestExecutionListeners({DependencyInjectionTestExecutionListener.class,
+        DirtiesContextTestExecutionListener.class,
+        TransactionalTestExecutionListener.class,
+        DbUnitTestExecutionListener.class})
+@DatabaseSetup(value = "classpath:db.xml", type = DatabaseOperation.CLEAN_INSERT)
+@DatabaseTearDown(value = "classpath:tearDown.xml", type = DatabaseOperation.DELETE_ALL)
 public class NewsDaoImplTest {
-
-    @Configuration
-    @ComponentScan("com.epam.task1")
-    static class ContextConfiguration {
-    }
-
-    @Autowired
-    DataSource dataSource;
 
     @Autowired
     private NewsDao newsDao;
 
+    private static final String NEWS_TITLE = "Solution";
+
     @Test
     @Rollback
     public void testViewAllNews() {
-        List<News> news;
-        news = newsDao.viewAllNews();
+        List<News> news = newsDao.viewAllNews();
 
         Assert.assertFalse(news.isEmpty());
         Assert.assertTrue(news.get(0) instanceof News);
@@ -45,8 +49,7 @@ public class NewsDaoImplTest {
     @Test
     @Rollback
     public void testViewPopularNews() {
-        List<News> news;
-        news = newsDao.viewAllPopularNews();
+        List<News> news = newsDao.viewAllPopularNews();
 
         Assert.assertFalse(news.isEmpty());
         Assert.assertTrue(news.get(0) instanceof News);
@@ -55,10 +58,9 @@ public class NewsDaoImplTest {
     @Test
     @Rollback
     public void testViewAllNewsByTheme() {
-        Theme theme = Theme.FASHION;
+        Theme theme = Theme.CRIMINAL;
 
-        List<News> news;
-        news = newsDao.viewAllNews(theme);
+        List<News> news = newsDao.viewAllNews(theme);
 
         Assert.assertFalse(news.isEmpty());
         Assert.assertTrue(news.get(0) instanceof News);
@@ -70,8 +72,7 @@ public class NewsDaoImplTest {
     public void testViewASingleNewsById() {
         int idNews = 501;
 
-        List<News> news;
-        news = newsDao.viewASingleNews(idNews);
+        List<News> news = newsDao.viewASingleNews(idNews);
 
         Assert.assertFalse(news.isEmpty());
         Assert.assertEquals(news.get(0).getId(), idNews);
@@ -80,13 +81,10 @@ public class NewsDaoImplTest {
     @Test
     @Rollback
     public void testViewASingleNewsByTitle() {
-        String title = "Solution";
-
-        List<News> news;
-        news = newsDao.viewASingleNews(title);
+        List<News> news = newsDao.viewASingleNews(NEWS_TITLE);
 
         Assert.assertFalse(news.isEmpty());
-        Assert.assertEquals(news.get(0).getMainTitle(), title);
+        Assert.assertEquals(news.get(0).getMainTitle(), NEWS_TITLE);
     }
 
 }

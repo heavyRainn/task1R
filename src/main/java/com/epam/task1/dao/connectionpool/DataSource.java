@@ -3,13 +3,14 @@ package com.epam.task1.dao.connectionpool;
 import com.epam.task1.exception.DaoException;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
 @Component
-public class DataSource {
+public class DataSource extends DriverManagerDataSource {
 
     @Autowired
     private BasicDataSource ds;

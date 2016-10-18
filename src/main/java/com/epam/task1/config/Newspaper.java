@@ -1,13 +1,19 @@
 package com.epam.task1.config;
 
+import com.epam.task1.model.Tag;
 import com.epam.task1.model.Theme;
 import com.epam.task1.service.AuthorService;
 import com.epam.task1.service.NewsService;
 import com.epam.task1.service.TagService;
 import com.epam.task1.service.UserService;
+import com.epam.task1.service.search.NewsSearchCriteria;
+import com.epam.task1.service.search.NewsSearchType;
 import org.apache.log4j.BasicConfigurator;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class Newspaper {
 
@@ -22,6 +28,12 @@ public class Newspaper {
         TagService tagService = ctx.getBean(TagService.class);
         NewsService newsService = ctx.getBean(NewsService.class);
 
+        Set<Tag> tags = new HashSet<>();
+        tags.add(new Tag("#HOME"));
+        tags.add(new Tag("#SELFIE"));
+        NewsSearchCriteria nsc = new NewsSearchCriteria(NewsSearchType.BY_TAGS);
+        nsc.setTags(tags);
+
         System.out.println("UserService : " + userService.authenticate("Grek221", "1222"));
         System.out.println("AuthorService : " + authorService.read());
         System.out.println("AuthorService  : " + authorService.read(501));
@@ -32,6 +44,7 @@ public class Newspaper {
         System.out.println("NewsService : " + newsService.totalCount());
         System.out.println("NewsService : " + newsService.totalCount(Theme.FASHION));
         System.out.println("NewsService : " + newsService.viewAllPopularNews());
+        System.out.println("NewsService BY TAGS: " + newsService.viewASingleNews(nsc));
 
     }
 }
