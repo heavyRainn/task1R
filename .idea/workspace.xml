@@ -2,59 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fba167a1-005a-476d-80e5-76927de66586" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_1_1_0_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_validator_5_3_0_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_0_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/epam/task1/exception/DataSourceException.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/epam/task1/dao/Dao.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/epam/task1/dao/Dao.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/epam/task1/config/Newspaper.class" afterPath="$PROJECT_DIR$/target/classes/com/epam/task1/config/Newspaper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/epam/task1/config/NewspaperConfig.class" afterPath="$PROJECT_DIR$/target/classes/com/epam/task1/config/NewspaperConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/epam/task1/dao/CrudDao.class" afterPath="$PROJECT_DIR$/target/classes/com/epam/task1/dao/CrudDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/epam/task1/dao/NewsDao.class" afterPath="$PROJECT_DIR$/target/classes/com/epam/task1/dao/NewsDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/epam/task1/dao/UserDao.class" afterPath="$PROJECT_DIR$/target/classes/com/epam/task1/dao/UserDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/epam/task1/dao/connectionpool/DataSource.class" afterPath="$PROJECT_DIR$/target/classes/com/epam/task1/dao/connectionpool/DataSource.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/epam/task1/dao/impl/NewsDaoImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/epam/task1/dao/impl/NewsDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/epam/task1/dao/impl/UserDaoImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/epam/task1/dao/impl/UserDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/epam/task1/model/Author.class" afterPath="$PROJECT_DIR$/target/classes/com/epam/task1/model/Author.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/epam/task1/model/Comment.class" afterPath="$PROJECT_DIR$/target/classes/com/epam/task1/model/Comment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/epam/task1/model/News.class" afterPath="$PROJECT_DIR$/target/classes/com/epam/task1/model/News.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/epam/task1/model/Tag.class" afterPath="$PROJECT_DIR$/target/classes/com/epam/task1/model/Tag.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/epam/task1/model/User.class" afterPath="$PROJECT_DIR$/target/classes/com/epam/task1/model/User.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/epam/task1/service/UserService.class" afterPath="$PROJECT_DIR$/target/classes/com/epam/task1/service/UserService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/epam/task1/config/NewspaperConfigTest.class" afterPath="$PROJECT_DIR$/target/test-classes/com/epam/task1/config/NewspaperConfigTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/epam/task1/dao/impl/AuthorDaoImplTest.class" afterPath="$PROJECT_DIR$/target/test-classes/com/epam/task1/dao/impl/AuthorDaoImplTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/epam/task1/dao/impl/CommentDaoImplTest.class" afterPath="$PROJECT_DIR$/target/test-classes/com/epam/task1/dao/impl/CommentDaoImplTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/epam/task1/dao/impl/NewsDaoImplTest.class" afterPath="$PROJECT_DIR$/target/test-classes/com/epam/task1/dao/impl/NewsDaoImplTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/epam/task1/dao/impl/TagDaoImplTest.class" afterPath="$PROJECT_DIR$/target/test-classes/com/epam/task1/dao/impl/TagDaoImplTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/epam/task1/dao/impl/UserDaoImplTest.class" afterPath="$PROJECT_DIR$/target/test-classes/com/epam/task1/dao/impl/UserDaoImplTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sonarIssues.xml" afterPath="$PROJECT_DIR$/.idea/sonarIssues.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/epam/task1/config/Newspaper.java" afterPath="$PROJECT_DIR$/src/main/java/com/epam/task1/config/Newspaper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/epam/task1/config/NewspaperConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/epam/task1/config/NewspaperConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/epam/task1/dao/CrudDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/epam/task1/dao/CrudDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/epam/task1/dao/NewsDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/epam/task1/dao/NewsDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/epam/task1/dao/UserDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/epam/task1/dao/UserDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/epam/task1/dao/connectionpool/DataSource.java" afterPath="$PROJECT_DIR$/src/main/java/com/epam/task1/dao/connectionpool/DataSource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/epam/task1/dao/impl/AuthorDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/epam/task1/dao/impl/AuthorDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/epam/task1/dao/impl/NewsDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/epam/task1/dao/impl/NewsDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/epam/task1/dao/impl/UserDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/epam/task1/dao/impl/UserDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/epam/task1/model/Author.java" afterPath="$PROJECT_DIR$/src/main/java/com/epam/task1/model/Author.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/epam/task1/model/Comment.java" afterPath="$PROJECT_DIR$/src/main/java/com/epam/task1/model/Comment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/epam/task1/model/News.java" afterPath="$PROJECT_DIR$/src/main/java/com/epam/task1/model/News.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/epam/task1/model/Tag.java" afterPath="$PROJECT_DIR$/src/main/java/com/epam/task1/model/Tag.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/epam/task1/model/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/epam/task1/model/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/epam/task1/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/epam/task1/service/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/epam/task1/config/NewspaperConfigTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/epam/task1/config/NewspaperConfigTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/epam/task1/dao/impl/AuthorDaoImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/epam/task1/dao/impl/AuthorDaoImplTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/epam/task1/dao/impl/CommentDaoImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/epam/task1/dao/impl/CommentDaoImplTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/epam/task1/dao/impl/NewsDaoImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/epam/task1/dao/impl/NewsDaoImplTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/epam/task1/dao/impl/TagDaoImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/epam/task1/dao/impl/TagDaoImplTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/epam/task1/dao/impl/UserDaoImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/epam/task1/dao/impl/UserDaoImplTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/epam/task1/service/UserServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/epam/task1/service/UserServiceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task1.iml" afterPath="$PROJECT_DIR$/task1.iml" />
     </list>
     <ignored path="task1R.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -79,7 +27,7 @@
       <file leaf-file-name="CommentDaoImplTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/epam/task1/dao/impl/CommentDaoImplTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-248">
+            <state relative-caret-position="-95">
               <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
               <folding />
             </state>
@@ -1356,7 +1304,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.07679739" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1367,7 +1315,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928804" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3251634" sideWeight="0.4969697" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3202765" sideWeight="0.4969697" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3251634" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3248848" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27993527" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1797,7 +1745,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/epam/task1/dao/impl/CommentDaoImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-248">
+        <state relative-caret-position="-95">
           <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
           <folding />
         </state>
