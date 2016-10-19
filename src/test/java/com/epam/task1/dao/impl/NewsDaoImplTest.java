@@ -36,6 +36,7 @@ public class NewsDaoImplTest {
     private NewsDao newsDao;
 
     private static final String NEWS_TITLE = "Solution";
+    private static final int NEWS_ID = 501;
 
     @Test
     @Rollback
@@ -70,12 +71,10 @@ public class NewsDaoImplTest {
     @Test
     @Rollback
     public void testViewASingleNewsById() {
-        int idNews = 501;
-
-        List<News> news = newsDao.viewASingleNews(idNews);
+        List<News> news = newsDao.viewASingleNews(NEWS_ID);
 
         Assert.assertFalse(news.isEmpty());
-        Assert.assertEquals(news.get(0).getId(), idNews);
+        Assert.assertEquals(news.get(0).getId(), NEWS_ID);
     }
 
     @Test

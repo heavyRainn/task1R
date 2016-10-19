@@ -38,6 +38,7 @@ public class AuthorDaoImplTest {
     private static final String SURNAME_CREATE = "Natelege";
     private static final String NAME_UPDATE = "Zigmoond";
     private static final String SURNAME_UPDATE = "Freid";
+    private static final int NEWS_ID = 501;
 
     @Test
     @Rollback
@@ -67,8 +68,7 @@ public class AuthorDaoImplTest {
     @Test
     @Rollback
     public void testReadById() {
-        int id = 501;
-        List<Author> authors = authorDao.read(id);
+        List<Author> authors = authorDao.read(NEWS_ID);
 
         Assert.assertFalse(authors.isEmpty());
         Assert.assertTrue(authors.get(0) instanceof Author);
@@ -96,11 +96,11 @@ public class AuthorDaoImplTest {
     public void testDelete() {
         List<Author> authors = authorDao.read();
 
-        Author autor = authors.get(0);
-        int autorId = autor.getId();
+        Author author = authors.get(0);
+        int authorId = author.getId();
         int sizeBefore = authors.size();
 
-        Assert.assertTrue(authorDao.delete(autorId));
+        Assert.assertTrue(authorDao.delete(authorId));
 
         authors = authorDao.read();
 

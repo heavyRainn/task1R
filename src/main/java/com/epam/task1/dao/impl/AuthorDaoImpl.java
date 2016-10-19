@@ -4,6 +4,7 @@ import com.epam.task1.dao.CrudDao;
 import com.epam.task1.dao.connectionpool.DataSource;
 import com.epam.task1.exception.DaoException;
 import com.epam.task1.model.Author;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

@@ -36,6 +36,7 @@ public class CommentDaoImplTest {
 
     private static final String COMMENT_TEXT_CREATE = "TESTCASER DBUNIT";
     private static final String COMMENT_TEXT_UPDATE = "ALIENS BEST";
+    private static final int NEWS_ID = 501;
 
     @Test
     @Rollback
@@ -60,6 +61,15 @@ public class CommentDaoImplTest {
     @Rollback
     public void testRead() {
         List<Comment> comments = commentDao.read();
+
+        Assert.assertFalse(comments.isEmpty());
+        Assert.assertTrue(comments.get(0) instanceof Comment);
+    }
+
+    @Test
+    @Rollback
+    public void testReadById() {
+        List<Comment> comments = commentDao.read(NEWS_ID);
 
         Assert.assertFalse(comments.isEmpty());
         Assert.assertTrue(comments.get(0) instanceof Comment);

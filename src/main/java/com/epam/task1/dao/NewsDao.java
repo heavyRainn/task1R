@@ -1,12 +1,14 @@
 package com.epam.task1.dao;
 
-import com.epam.task1.exception.DaoException;
-import com.epam.task1.model.*;
+import com.epam.task1.model.Author;
+import com.epam.task1.model.News;
+import com.epam.task1.model.Tag;
+import com.epam.task1.model.Theme;
 
 import java.util.List;
 import java.util.Set;
 
-public interface NewsDao extends Dao {
+public interface NewsDao {
 
     List<News> viewAllNews();
 

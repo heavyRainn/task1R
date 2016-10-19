@@ -40,9 +40,4 @@ public class NewspaperConfigTest {
         return bds;
     }
 
-
-    @Bean
-    public static PropertySourcesPlaceholderConfigurer propertyConfigInDev() {
-        return new PropertySourcesPlaceholderConfigurer();
-    }
 }

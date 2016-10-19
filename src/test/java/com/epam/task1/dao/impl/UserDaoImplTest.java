@@ -35,6 +35,8 @@ public class UserDaoImplTest {
     private static final String PASSWORD_EXSISTS = "123";
     private static final String LOGIN_NOT_EXSISTS = "sere";
     private static final String PASSWORD_NOT_EXSISTS = "1230";
+    private static final String LOGIN_SIGN_UP = "Varfalamei";
+    private static final String PASSWORD_SIGN_UP = "530";
 
     @Test
     @Rollback
@@ -46,6 +48,12 @@ public class UserDaoImplTest {
     @Rollback
     public void testAuthenticateReturnFalse() {
         Assert.assertFalse(userDao.authenticate(LOGIN_NOT_EXSISTS, PASSWORD_NOT_EXSISTS));
+    }
+
+    @Test
+    @Rollback
+    public void testSignUpReturnTrue() {
+        Assert.assertTrue(userDao.signUp(LOGIN_SIGN_UP, PASSWORD_SIGN_UP));
     }
 
 }

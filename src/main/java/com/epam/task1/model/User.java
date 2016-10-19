@@ -1,10 +1,17 @@
 package com.epam.task1.model;
 
+import javax.validation.constraints.Size;
+
 public class User {
 
     private int id;
+
+    @Size(min = 2, max = 25)
     private String login;
+
+    @Size(min = 8, max = 100)
     private String password;
+
 
     public int getId() {
         return id;

@@ -36,6 +36,8 @@ public class TagDaoImplTest {
 
     private static final String TAG_TEXT_CREATE = "#SIMPLIFY";
     private static final String TAG_TEXT_UPDATE = "#SEVENTEENEXX";
+    private static final int NEWS_ID = 501;
+    private static final int TAG_NUMBER = 0;
 
     @Test
     @Rollback
@@ -64,19 +66,26 @@ public class TagDaoImplTest {
 
     @Test
     @Rollback
-    public void testUpdate() {
-        int tagNum = 0;
+    public void testReadById() {
+        List<Tag> tags = tagDao.read(NEWS_ID);
 
+        Assert.assertFalse(tags.isEmpty());
+        Assert.assertTrue(tags.get(0) instanceof Tag);
+    }
+
+    @Test
+    @Rollback
+    public void testUpdate() {
         List<Tag> tags = tagDao.read();
 
         Tag tagBefore = new Tag(TAG_TEXT_UPDATE);
-        tagBefore.setId(tags.get(tagNum).getId());
+        tagBefore.setId(tags.get(TAG_NUMBER).getId());
 
         Assert.assertTrue(tagDao.update(tagBefore));
 
         tags = tagDao.read();
 
-        Tag tagAfter = tags.get(tagNum);
+        Tag tagAfter = tags.get(TAG_NUMBER);
 
         Assert.assertEquals(tagBefore, tagAfter);
     }
@@ -84,11 +93,9 @@ public class TagDaoImplTest {
     @Test
     @Rollback
     public void testDelete() {
-        int tagNum = 0;
-
         List<Tag> tags = tagDao.read();
 
-        Tag tag = tags.get(tagNum);
+        Tag tag = tags.get(TAG_NUMBER);
         int tagId = tag.getId();
         int sizeBefore = tags.size();
 

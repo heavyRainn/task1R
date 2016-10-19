@@ -26,6 +26,7 @@ public class UserDaoImpl implements UserDao {
 
     private static final String AUTHENTICATE = "SELECT UR_ID,UR_LOGIN,UR_PASSWORD FROM USERS WHERE UR_LOGIN=(?) " +
             "and UR_PASSWORD=(?)";
+    private static final String SIGN_UP = "INSERT INTO USERS (ur_id, ur_login, ur_password) VALUES (null,?,?)";
 
     public boolean authenticate(String login, String password) throws DaoException {
         ResultSet rs = null;
@@ -54,6 +55,24 @@ public class UserDaoImpl implements UserDao {
                 throw new DaoException(e);
             }
         }
+        return false;
+    }
+
+    public boolean signUp(String login, String password) throws DaoException {
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement ps = connection.prepareStatement(SIGN_UP)) {
+
+            ps.setString(1, login);
+            ps.setString(2, password);
+
+            if (ps.executeUpdate() > 0) {
+                return true;
+            }
+
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        }
+
         return false;
     }
 

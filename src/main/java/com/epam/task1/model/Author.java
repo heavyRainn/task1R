@@ -1,12 +1,20 @@
 package com.epam.task1.model;
 
-import static javax.swing.text.StyleConstants.Size;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 public class Author {
 
     private int id;
+
+    @NotNull
+    @Size(min = 2, max = 20)
     private String name;
+
+    @NotNull
+    @Size(min = 2, max = 20)
     private String surname;
+
 
     public Author(String name, String surname) {
         this.surname = surname;

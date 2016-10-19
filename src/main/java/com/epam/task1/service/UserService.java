@@ -15,4 +15,7 @@ public class UserService {
         return userDao.authenticate(login, password);
     }
 
+    public boolean signUp(String login, String password) {
+        return userDao.signUp(login, password);
+    }
 }

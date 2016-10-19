@@ -1,11 +1,8 @@
 package com.epam.task1.dao;
 
-import com.epam.task1.exception.DaoException;
-
-import java.sql.SQLException;
 import java.util.List;
 
-public interface CrudDao<T> extends Dao {
+public interface CrudDao<T> {
 
     boolean create(T t);
 

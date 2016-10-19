@@ -1,13 +1,27 @@
 package com.epam.task1.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 import java.sql.Date;
 
 public class Comment {
 
     private int id;
+
+    @NotNull
+    @Size(max = 250)
     private String text;
+
+    @NotNull
+    @DateTimeFormat(pattern="dd-MM-yyyy")
+    @Past
     private Date date;
+
     private int userId;
+
 
     public Comment(String text, Date date) {
         this.text = text;

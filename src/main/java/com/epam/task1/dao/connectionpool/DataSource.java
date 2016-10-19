@@ -1,6 +1,6 @@
 package com.epam.task1.dao.connectionpool;
 
-import com.epam.task1.exception.DaoException;
+import com.epam.task1.exception.DataSourceException;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -15,11 +15,11 @@ public class DataSource extends DriverManagerDataSource {
     @Autowired
     private BasicDataSource ds;
 
-    public Connection getConnection() throws DaoException {
+    public Connection getConnection(){
         try {
             return ds.getConnection();
         } catch (SQLException e) {
-            throw new DaoException(e);
+            throw new DataSourceException(e);
         }
     }
 

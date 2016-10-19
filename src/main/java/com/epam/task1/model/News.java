@@ -1,19 +1,40 @@
 package com.epam.task1.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 import java.sql.Date;
 import java.util.List;
 
 public class News {
 
     private int id;
+
+    @Size(min = 2, max = 50)
     private String mainTitle;
+
+    @Size(min = 2, max = 250)
     private String shortTitle;
+
+    @Size(min = 2, max = 5000)
     private String newsText;
+
+    @NotNull
+    @DateTimeFormat(pattern="dd-MM-yyyy")
+    @Past
     private Date date;
+
     private List<Tag> tags;
     private List<Author> authors;
+
+    @Size(max = 60)
     private String photo;
+
+    @Size(max = 20)
     private Theme theme;
+
 
     public News() {
 

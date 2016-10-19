@@ -25,7 +25,6 @@ public class UserServiceTest {
     @Mock
     UserDao userDao;
 
-
     @Before
     public void setUpMocks() {
         BasicConfigurator.configure();
@@ -34,8 +33,10 @@ public class UserServiceTest {
         String password = any(String.class);
 
         when(userService.authenticate(login, password)).thenReturn(true);
+        when(userService.signUp(login, password)).thenReturn(true);
 
         when(userDao.authenticate(login, password)).thenReturn(true);
+        when(userDao.signUp(login, password)).thenReturn(true);
     }
 
     @Test
@@ -47,6 +48,17 @@ public class UserServiceTest {
         verify(userDao).authenticate(login, password);
 
         Assert.assertEquals(userService.authenticate(login, password), userDao.authenticate(login, password));
+    }
+
+    @Test
+    public void testUserServiceSignUp() {
+        String login = any(String.class);
+        String password = any(String.class);
+
+        userService.signUp(login, password);
+        verify(userDao).signUp(login, password);
+
+        Assert.assertEquals(userService.signUp(login, password), userDao.signUp(login, password));
     }
 
 }

@@ -38,10 +38,7 @@ public class NewspaperConfig {
         bds.setMaxActive(maxActive);
 
         return bds;
+
     }
 
-    @Bean
-    public static PropertySourcesPlaceholderConfigurer propertyConfigInDev() {
-        return new PropertySourcesPlaceholderConfigurer();
-    }
 }

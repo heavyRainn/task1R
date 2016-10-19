@@ -1,9 +1,14 @@
 package com.epam.task1.model;
 
+import javax.validation.constraints.Size;
+
 public class Tag {
 
     private int id;
+
+    @Size(min = 1, max = 250)
     private String text;
+
 
     public Tag(String text) {
         this.text = text;

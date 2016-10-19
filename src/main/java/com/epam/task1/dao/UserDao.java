@@ -1,9 +1,9 @@
 package com.epam.task1.dao;
 
-import com.epam.task1.exception.DaoException;
-
-public interface UserDao extends Dao {
+public interface UserDao {
 
     boolean authenticate(String login, String password);
+
+    boolean signUp(String login, String password);
 
 }

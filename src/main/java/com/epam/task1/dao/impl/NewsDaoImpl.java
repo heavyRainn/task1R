@@ -36,12 +36,14 @@ public class NewsDaoImpl implements NewsDao {
             "N_DATE,N_PHOTO,N_THEME FROM NEWS WHERE N_ID = ?";
     private final static String SQL_GET_SINGLE_NEWS_BY_TITLE = "SELECT N_ID, N_MAINTITLE,N_SHORTTITLE,N_NEWSTEXT," +
             "N_DATE,N_PHOTO,N_THEME FROM NEWS WHERE N_MAINTITLE = ?";
-    private final static String SQL_GET_SINGLE_NEWS_BY_TAGS = "SELECT NEWS.N_ID, NEWS.N_MAINTITLE, NEWS.N_SHORTTITLE ,NEWS.N_DATE,NEWS.N_PHOTO,NEWS.N_THEME FROM NEWS \n" +
-            "JOIN NEWS_HAVE_TAGS ON NEWS_HAVE_TAGS.N_ID = NEWS.N_ID \n" +
-            "JOIN TAGS ON NEWS_HAVE_TAGS.TG_ID = TAGS.TG_ID \n" +
-            "WHERE TAGS.TG_MESSAGE IN (?) \n" +
+    private final static String SQL_GET_SINGLE_NEWS_BY_TAGS = "SELECT NEWS.N_ID, NEWS.N_MAINTITLE, NEWS.N_SHORTTITLE " +
+            ",NEWS.N_DATE,NEWS.N_PHOTO,NEWS.N_THEME FROM NEWS JOIN NEWS_HAVE_TAGS ON NEWS_HAVE_TAGS.N_ID = NEWS.N_ID " +
+            "JOIN TAGS ON NEWS_HAVE_TAGS.TG_ID = TAGS.TG_ID WHERE TAGS.TG_MESSAGE IN (?) " +
             "GROUP BY (NEWS.N_ID, NEWS.N_MAINTITLE, NEWS.N_SHORTTITLE ,NEWS.N_DATE,NEWS.N_PHOTO,NEWS.N_THEME)";
-    private final static String SQL_GET_SINGLE_NEWS_BY_AUTHORS = "";
+    private final static String SQL_GET_SINGLE_NEWS_BY_AUTHORS = "SELECT NEWS.N_ID, NEWS.N_MAINTITLE, NEWS.N_SHORTTITLE, " +
+            "NEWS.N_DATE,NEWS.N_PHOTO,NEWS.N_THEME FROM NEWS JOIN NEWS_HAVE_AUTHORS ON NEWS_HAVE_AUTHORS.N_ID = NEWS.N_ID " +
+            "JOIN AUTHORS ON NEWS_HAVE_AUTHORS.ATR_ID = AUTHORS.ATR_ID WHERE AUTHORS.ATR_NAME IN (?) AND AUTHORS.ATR_SURNAME " +
+            "IN (?) GROUP BY (NEWS.N_ID, NEWS.N_MAINTITLE, NEWS.N_SHORTTITLE ,NEWS.N_DATE,NEWS.N_PHOTO,NEWS.N_THEME)";
     private final static String SQL_CREATE_NEWS = "INSERT INTO NEWS (N_ID, N_MAINTITLE,N_SHORTTITLE,N_NEWSTEXT," +
             "N_DATE,N_PHOTO,N_THEME) VALUES (null,?,?,?,?,?,?)";
     private final static String SQL_EDIT_NEWS = "UPDATE NEWS SET N_MAINTITLE = ?, N_SHORTTITLE = ? , N_NEWSTEXT" +
@@ -278,25 +280,27 @@ public class NewsDaoImpl implements NewsDao {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement ps = connection.prepareStatement(SQL_GET_SINGLE_NEWS_BY_AUTHORS)) {
 
+            for (Author author : authors) {
 
-            rs = ps.executeQuery();
+                ps.setString(1, author.getName());
+                ps.setString(2, author.getSurname());
 
-            while (rs.next()) {
+                rs = ps.executeQuery();
 
-                News news = new News();
+                while (rs.next()) {
 
-                news.setId(rs.getInt(1));
-                news.setMainTitle(rs.getString(2));
-                news.setShortTitle(rs.getString(3));
-                news.setNewsText(rs.getString(4));
-                news.setDate(rs.getDate(5));
-                news.setPhoto(rs.getString(6));
-                news.setTheme(Theme.valueOf(rs.getString(7).toUpperCase()));
+                    News news = new News();
 
-                newsList.add(news);
+                    news.setId(rs.getInt(1));
+                    news.setMainTitle(rs.getString(2));
+                    news.setShortTitle(rs.getString(3));
+                    news.setDate(rs.getDate(4));
+                    news.setPhoto(rs.getString(5));
+                    news.setTheme(Theme.valueOf(rs.getString(6).toUpperCase()));
 
+                    newsList.add(news);
+                }
             }
-
         } catch (SQLException e) {
             throw new DaoException(e);
         } finally {
